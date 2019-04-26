@@ -44,18 +44,24 @@
     <table id="tableUsers" border="1">
       <thead>
       <tr>
+        <td>选择</td>
         <td>编号</td>
         <td>姓名</td>
         <td>年龄</td>
         <td>姓别</td>
+        <td>删除</td>
       </tr>
       </thead>
       <tbody>
-      <tr v-for="user in users">
+      <tr :class="{contacted:user.contacted}" v-for="user in users">
+        <td><input type="checkbox" v-model="user.contacted"></td>
         <td>{{user.id}}</td>
         <td>{{user.name}}</td>
         <td>{{user.age}}</td>
         <td>{{user.sex}}</td>
+        <td>
+          <button v-on:click="deleteUser(user)">删除</button>
+        </td>
       </tr>
       </tbody>
     </table>
@@ -89,9 +95,9 @@
         usersTitle: "用户信息管理",
         // 用户信息表
         users: [
-          {id: 1, name: "Wx", age: 20, sex: false},
-          {id: 2, name: "Yl", age: 20, sex: true},
-          {id: 3, name: "Si", age: 21, sex: false}
+          {id: 1, name: "Wx", age: 20, sex: false, contacted: false},
+          {id: 2, name: "Yl", age: 20, sex: true, contacted: false},
+          {id: 3, name: "Si", age: 21, sex: false, contacted: false}
         ],
         newUsers: {},
       }
@@ -120,8 +126,15 @@
           name: this.newUsers.name,
           age: this.newUsers.age,
           sex: this.newUsers.sex,
+          contacted: false,
         });
         e.preventDefault();
+      },
+      // 删除一行
+      deleteUser: function (user) {
+        // 用当前的对象查询当前当前对象的下标进行删除 删除的长度为1
+        this.users.splice(this.users.indexOf(user), 1);
+        console.log("this Delete");
       }
     },
     computed: {
@@ -135,5 +148,11 @@
 <style>
   #tableUsers {
     width: 100%;
+  }
+
+  /*当上面的样式为真的时候就会执行*/
+  .contacted {
+    background: darkgrey;
+    text-decoration: line-through;
   }
 </style>
