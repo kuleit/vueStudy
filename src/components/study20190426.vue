@@ -6,8 +6,8 @@
     <p v-text="user.lastName"></p>
 
     <!-- v-if -->
-    <p v-if="showName">{{user.firstName}}</p>
-    <p v-else="showName">{{user.lastName}}</p>
+    <p v-if="showName">{{user.firstName}}1</p>
+    <p v-else="showName">{{user.lastName}}2</p>
 
     <!-- v-for -->
     <ul>
@@ -34,10 +34,10 @@
     <hr>
     <h2>{{usersTitle}}</h2>
     <form v-on:submit="userSubmit">
-      <label for="id">id:</label><input id="id" type="text" placeholder="请输入姓名" v-model="newUsers.id">
-      <label for="name">name:</label><input id="name" type="text" placeholder="请输入姓名" v-model="newUsers.name">
-      <label for="age">age:</label><input id="age" type="text" placeholder="请输入年龄" v-model="newUsers.age">
-      <label for="sex">sex:</label><input id="sex" type="text" placeholder="请输入姓别" v-model="newUsers.sex">
+      <label for="id">id:</label><input id="id" type="text" placeholder="请输入姓名" required v-model="newUsers.id">
+      <label for="name">name:</label><input id="name" type="text" placeholder="请输入姓名" required v-model="newUsers.name">
+      <label for="age">age:</label><input id="age" type="text" placeholder="请输入年龄" required v-model="newUsers.age">
+      <label for="sex">sex:</label><input id="sex" type="text" placeholder="请输入姓别" required v-model="newUsers.sex">
       <button type="submit">提交</button>
     </form>
     <br>
@@ -65,6 +65,7 @@
       </tr>
       </tbody>
     </table>
+    <hr>
   </div>
 </template>
 
@@ -79,12 +80,12 @@
     },
     data() {
       return {
-        title: "Hello Vue study20190426",
+        title: "基本的数据语法",
         user: {
           firstName: "username",
           lastName: "wu"
         },
-        showName: false,
+        showName: true,
         // list
         items: [
           {username: "Wx", userAge: "20"},
