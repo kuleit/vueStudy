@@ -27,9 +27,7 @@
 
       选择：<span v-for="selectItem in selectType">{{selectItem + "-"}}</span> &nbsp;
     </form>
-    <div>
-
-    </div>
+    <hr>
   </div>
 </template>
 
