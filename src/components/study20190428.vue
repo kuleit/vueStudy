@@ -7,7 +7,7 @@
     <!--拦截器使用 查询 -->
 
     <div>
-      <span>查询: <input type="text" class="search" placeholder="请输入你要查询的内容" v-model="search"></span>
+      <span>查询: <input type="text" class="search" placeholder="请输入你要查询的姓名" v-model="search"></span>
     </div>
     <table id="table" border="1">
       <thead>
@@ -19,7 +19,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="student in students">
+      <tr v-for="student in filterStudents">
         <td v-text="student.id"></td>
         <td v-text="student.name"></td>
         <td v-text="student.age"></td>
@@ -51,6 +51,13 @@
           this.students = res.body;
         }
       });
+    },
+    computed: {
+      filterStudents: function () {
+        return this.students.filter(student => {
+          return student.name.match(this.search);
+        })
+      }
     }
   }
 </script>

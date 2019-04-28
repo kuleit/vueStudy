@@ -63,7 +63,6 @@
         res.body.forEach(item => {
           this.students.push(item);
         })
-        console.log(this.students);
       });
     }
   }
