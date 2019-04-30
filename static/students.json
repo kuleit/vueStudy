@@ -1,0 +1,22 @@
+{
+  "student": [
+    {
+      "id": 1,
+      "name": "tomcat",
+      "age": "19",
+      "sex": 0
+    },
+    {
+      "id": 2,
+      "name": "Admin",
+      "age": 25,
+      "sex": 0
+    },
+    {
+      "id": 3,
+      "name": "simon",
+      "age": 30,
+      "sex": 1
+    }
+  ]
+}

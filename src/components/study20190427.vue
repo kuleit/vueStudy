@@ -59,8 +59,8 @@
     },
     // 页面创建完成
     created: function () {
-      this.$http.get("http://localhost:3000/student").then(function (res) {
-        res.body.forEach(item => {
+      this.$http.get("./../static/students.json").then(function (res) {
+        res.body.student.forEach(item => {
           this.students.push(item);
         })
       });

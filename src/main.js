@@ -5,9 +5,15 @@ import App from './App'
 
 // 引入http请求
 import VueResourse from 'vue-resource'
+// 引入路由
+import VueRouter from 'vue-router'
+// 路由界面
+import Routes from './routes'
 
 Vue.config.productionTip = false
 Vue.use(VueResourse)
+Vue.use(VueRouter);
+
 
 // 自定义指令 全局
 Vue.directive("h2Color", {
@@ -15,6 +21,7 @@ Vue.directive("h2Color", {
     el.style.color = "red";
   }
 })
+
 Vue.directive("weight", {
   bind(el, binding, vnode) {
     if (binding.value == "true") {
@@ -28,10 +35,16 @@ Vue.directive("weight", {
   }
 })
 
+// 创建一个路由
+const router = new VueRouter({
+  routes: Routes,
+  mode: "history"
+})
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   components: {App},
-  template: '<App/>'
+  template: '<App/>',
+  router: router
 })

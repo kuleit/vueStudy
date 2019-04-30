@@ -42,13 +42,15 @@
         students: [],
         // 数据查询
         search: "",
+        // 从地址栏上获取ID
+        // id: this.$router.params.id
       }
     },
     created: function () {
-      this.$http.get("http://localhost:3000/student").then(function (res) {
+      this.$http.get("./../static/students.json").then(function (res) {
         // 条件成立
         if (res.status == "200") {
-          this.students = res.body;
+          this.students = res.body.student;
         }
       });
     },
